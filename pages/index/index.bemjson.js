@@ -12,7 +12,7 @@
       content: {
         block: 'b-link',
         mods: { inner: 'yes' },
-        url: '#',
+        url: 'https://github.com/Shuhrat/bem-cv',
         content: [
           {
             block: 'b-icon',
@@ -942,7 +942,7 @@
     },
     {
       block: 'i-metrika',
-      counter: 15951091
+      counter: 16513258
     }
   ]
 })
