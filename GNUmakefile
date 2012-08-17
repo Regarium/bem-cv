@@ -7,6 +7,7 @@ BEM_BUILD=$(BEM) build \
 	-l bem-bl/blocks-common/ \
 	-l bem-bl/blocks-desktop/ \
 	-l blocks/ \
+	-l blocks-$2/ \
 	-l $(@D)/blocks/ \
 	-d $< \
 	-t $1 \
@@ -14,35 +15,41 @@ BEM_BUILD=$(BEM) build \
 	-n $(*F)
 
 BEM_CREATE=$(BEM) create block \
-		-l pages \
+		-l $2 \
 		-T $1 \
 		--force \
 		$(*F)
 
-%.html: %.bemhtml.js %.css %.js %.ie.css %.bemhtml.js
-	$(call BEM_CREATE,bem-bl/blocks-common/i-bem/bem/techs/html.js)
+%.html: %.bemhtml.js %.css %.js %.bemhtml.js
+	$(call BEM_CREATE,bem-bl/blocks-common/i-bem/bem/techs/html.js,$(firstword $(subst /, ,$(dir $@))))
 
 .PRECIOUS: %.bemhtml.js
 %.bemhtml.js: %.deps.js
-	$(call BEM_BUILD,bem-bl/blocks-common/i-bem/bem/techs/bemhtml.js)
+	$(call BEM_BUILD,bem-bl/blocks-common/i-bem/bem/techs/bemhtml.js,$(word 2,$(subst -, ,$(firstword $(firstword $(subst /, ,$(dir $@)))))))
 
 %.deps.js: %.bemdecl.js
-	$(call BEM_BUILD,deps.js)
+	$(call BEM_BUILD,deps.js,$(word 2,$(subst -, ,$(firstword $(firstword $(subst /, ,$(dir $@)))))))
 
 %.bemdecl.js: %.bemjson.js
-	$(call BEM_CREATE,bemdecl.js)
+	$(call BEM_CREATE,bemdecl.js,$(firstword $(subst /, ,$(dir $@))))
 
 .PRECIOUS: %.ie.css
 %.ie.css: %.deps.js
-	$(call BEM_BUILD,ie.css)
+	$(call BEM_BUILD,ie.css,$(word 2,$(subst -, ,$(firstword $(firstword $(subst /, ,$(dir $@)))))))
+	borschik -t css -i $(@D)/$(*F).css -o $(@D)/_$(*F).css
+	csso -i $(@D)/_$(*F).css -o $(@D)/_$(*F).css
 
 .PRECIOUS: %.css
 %.css: %.deps.js
-	$(call BEM_BUILD,css)
+	$(call BEM_BUILD,css,$(word 2,$(subst -, ,$(firstword $(firstword $(subst /, ,$(dir $@)))))))
+	borschik -t css -i $(@D)/$(*F).css -o $(@D)/_$(*F).css
+	csso -i $(@D)/_$(*F).css -o $(@D)/_$(*F).css
+
 
 .PRECIOUS: %.js
 %.js: %.deps.js
-	$(call BEM_BUILD,js)
+	$(call BEM_BUILD,js,$(word 2,$(subst -, ,$(firstword $(firstword $(subst /, ,$(dir $@)))))))
+	uglifyjs -nc -o $(@D)/_$(*F).js $(@D)/$(*F).js
 
 
 DO_GIT=@echo -- git $1 $2; \
@@ -55,5 +62,6 @@ DO_GIT=@echo -- git $1 $2; \
 
 bem-bl:
 	$(call DO_GIT,git://github.com/bem/bem-bl.git,$@)
+
 
 .PHONY: all
