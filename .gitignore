@@ -1,6 +1,9 @@
-# Build Folders (you can keep bin if you'd like, to store dlls and pdbs)
-bin
-obj
-
-# mstest test results
-TestResults
+.idea
+bem-bl
+_matrioshka
+*.iml
+pages/*/*.css
+pages/*/*.js
+!pages/*/*.bemjson.js
+pages/*/*.html
+!level.js

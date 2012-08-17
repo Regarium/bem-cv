@@ -1,0 +1,29 @@
+block b-image-grid {
+  content: {
+    elem: 'thumbnails',
+    data: this.ctx.data || []
+  }
+
+  elem thumbnails {
+    content: {
+      var grid = [],
+          cell;
+
+      this.ctx.data.forEach(function(e) {
+        cell = {
+          tag: 'ins',
+          elem: 'thumbnail',
+          content: {
+            elem: 'cell',
+            content: e
+          }
+        };
+
+        grid.push(cell);
+      });
+
+      return grid;
+    }
+  }
+
+}

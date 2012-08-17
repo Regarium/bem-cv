@@ -1,0 +1,23 @@
+.b-table__cell
+{
+  padding: 0;
+  vertical-align: top;
+}
+
+.b-table__cell_type_question {
+  max-width: 290px;
+  min-height: 5px;
+  min-width: 290px;
+  overflow-x: hidden;
+  padding: 10px 25px 1px 50px;
+  text-align: left;
+  vertical-align: top;
+}
+
+.b-table__cell_type_answer {
+  background: none repeat scroll 0 0 #F5F5FF;
+  border-left: 1px solid #E5E5EE;
+  padding: 14px 15px 16px 25px;
+  vertical-align: top;
+  width: 100%;
+}

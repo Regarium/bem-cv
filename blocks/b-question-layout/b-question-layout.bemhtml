@@ -1,0 +1,41 @@
+block b-question-layout {
+  js: true,
+  tag: 'section'
+  content: [
+    {
+      elem: 'title',
+      content: {
+        tag: 'h2',
+        content: this.ctx.title
+      }
+    },
+    {
+      elem: 'questions',
+      data: this.ctx.data || []
+    }
+  ]
+
+  elem questions {
+    content: {
+      var table = {
+        block: 'b-table',
+        content: []
+      };
+
+      this.ctx.data.forEach(function(e) {
+        table.content.push({
+          elem: 'row',
+          content: [
+            { elem: 'cell', mods: {type: 'question'}, content: e.question },
+            { elem: 'cell', mods: {type: 'answer'}, content: e.answer }
+          ]
+        });
+      });
+
+      return table;
+    }
+  }
+
+
+}
+

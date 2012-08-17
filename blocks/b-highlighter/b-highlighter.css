@@ -1,0 +1,127 @@
+/*
+  github.com style (c) Vasily Polovnyov <vast@whiteants.net>
+*/
+.b-highlighter {
+  display: block; padding: 0.5em;
+  color: #333;
+}
+
+.b-highlighter .comment,
+.b-highlighter .template_comment,
+.b-highlighter .diff .header,
+.b-highlighter .javadoc {
+  color: #998;
+  font-style: italic
+}
+
+.b-highlighter .keyword,
+.b-highlighter .css .rule .keyword,
+.b-highlighter .winutils,
+.b-highlighter .javascript .title,
+.b-highlighter .nginx .title,
+.b-highlighter .subst,
+.b-highlighter .request,
+.b-highlighter .status {
+  color: #333;
+  font-weight: bold
+}
+
+.b-highlighter .number,
+.b-highlighter .hexcolor,
+.b-highlighter .ruby .constant {
+  color: #099;
+}
+
+.b-highlighter .string,
+.b-highlighter .tag .value,
+.b-highlighter .phpdoc,
+.b-highlighter .tex .formula {
+  color: #d14
+}
+
+.b-highlighter .title,
+.b-highlighter .id {
+  color: #900;
+  font-weight: bold
+}
+
+.b-highlighter .javascript .title,
+.b-highlighter .lisp .title,
+.b-highlighter .clojure .title,
+.b-highlighter .subst {
+  font-weight: normal
+}
+
+.b-highlighter .class .title,
+.b-highlighter .haskell .type,
+.b-highlighter .vhdl .literal,
+.b-highlighter .tex .command {
+  color: #458;
+  font-weight: bold
+}
+
+.b-highlighter .tag,
+.b-highlighter .tag .title,
+.b-highlighter .rules .property,
+.b-highlighter .django .tag .keyword {
+  color: #000080;
+  font-weight: normal
+}
+
+.b-highlighter .attribute,
+.b-highlighter .variable,
+.b-highlighter .lisp .body {
+  color: #008080
+}
+
+.b-highlighter .regexp {
+  color: #009926
+}
+
+.b-highlighter .class {
+  color: #458;
+  font-weight: bold
+}
+
+.b-highlighter .symbol,
+.b-highlighter .ruby .symbol .string,
+.b-highlighter .lisp .keyword,
+.b-highlighter .tex .special,
+.b-highlighter .input_number {
+  color: #990073
+}
+
+.b-highlighter .built_in,
+.b-highlighter .lisp .title,
+.b-highlighter .clojure .built_in {
+  color: #0086b3
+}
+
+.b-highlighter ..b-highlighterprocessor,
+.b-highlighter .pi,
+.b-highlighter .doctype,
+.b-highlighter .shebang,
+.b-highlighter .cdata {
+  color: #999;
+  font-weight: bold
+}
+
+.b-highlighter .deletion {
+  background: #fdd
+}
+
+.b-highlighter .addition {
+  background: #dfd
+}
+
+.b-highlighter .diff .change {
+  background: #0086b3
+}
+
+.b-highlighter .chunk {
+  color: #aaa
+}
+
+.b-highlighter .tex .formula {
+  opacity: 0.5;
+}

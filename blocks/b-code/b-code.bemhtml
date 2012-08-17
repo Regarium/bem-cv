@@ -1,0 +1,8 @@
+block b-code {
+  tag: 'pre'
+  content: {
+    tag: 'code',
+    cls: (this.ctx.language) ? 'language-' + this.ctx.language + ' ' + this.ctx.language : 'no-highlight',
+    content: this.ctx.content
+  }
+}
